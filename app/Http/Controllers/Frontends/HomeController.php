@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     function home() {
         // return view('frontends.homes.home');
-        return view('frontends.layouts.layout');
+        return view('frontends.homes.home');
     }
 }

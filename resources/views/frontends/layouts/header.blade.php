@@ -1,6 +1,3 @@
-@extends('frontends.layouts.layout')
-
-@section('header')
 <header class="header">
 
   <!-- Top Bar -->
@@ -318,4 +315,3 @@
   </div>
 
 </header>
-@endsection
