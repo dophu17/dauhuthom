@@ -34,4 +34,23 @@ Route::namespace('Backends')->middleware(CheckAdminAuth::class)->prefix('admin')
 
 Route::namespace('Frontends')->group(function () {
     Route::get('/', 'HomeController@home')->name('frontend.home');
+
+   	// spend
+    Route::get('/spends', 'SpendController@index')->name('frontend.spend.index');
+    Route::get('/spend/add', 'SpendController@getAdd')->name('frontend.spend.add');
+    Route::post('/spend/add', 'SpendController@postAdd')->name('frontend.spend.add');
+    Route::get('/spend/edit/{id}', 'SpendController@getEdit')->name('frontend.spend.edit');
+    Route::post('/spend/edit/{id}', 'SpendController@postEdit')->name('frontend.spend.edit');
+    Route::get('/spend/delete/{id}', 'SpendController@getDelete')->name('frontend.spend.delete');
+
+   	// category spend
+    Route::get('/category-spends', 'CategorySpendController@index')->name('frontend.category.spend.index');
+    Route::get('/category-spend/add', 'CategorySpendController@getAdd')->name('frontend.category.spend.add');
+    Route::post('/category-spend/add', 'CategorySpendController@postAdd')->name('frontend.category.spend.add');
+    Route::get('/category-spend/edit/{id}', 'CategorySpendController@getEdit')->name('frontend.category.spend.edit');
+    Route::post('/category-spend/edit/{id}', 'CategorySpendController@postEdit')->name('frontend.category.spend.edit');
+    Route::get('/category-spend/delete/{id}', 'CategorySpendController@getDelete')->name('frontend.category.spend.delete');
+
+   	// statistical
+    Route::get('/statistical', 'StatisticalController@index')->name('frontend.statistical.index');
 });
