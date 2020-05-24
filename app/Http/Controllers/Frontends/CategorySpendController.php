@@ -14,6 +14,7 @@ class CategorySpendController extends Controller
                                 $query->where('user_id', Auth::user()->id);
                                 $query->orWhereNull('user_id');
                             })->get();
+        
     	return view('frontends.category-spends.index', $data);
     }
 
