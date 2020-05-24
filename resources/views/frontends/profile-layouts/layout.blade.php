@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ asset('OneTech') }}/styles/bootstrap4/bootstrap.min.css">
 	<link href="{{ asset('OneTech') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 
 </head>
 
@@ -36,8 +35,6 @@
 	<script src="{{ asset('OneTech') }}/js/jquery-3.3.1.min.js"></script>
 	<script src="{{ asset('OneTech') }}/styles/bootstrap4/popper.js"></script>
 	<script src="{{ asset('OneTech') }}/styles/bootstrap4/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script>
 		$(document).ready(function(){
 		  let pathname = window.location.pathname;

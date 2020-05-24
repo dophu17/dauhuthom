@@ -29,7 +29,7 @@
       @foreach($list as $item)
       <tr>
         <td>{{ $item->category->title }}</td>
-        <td>{{ $item->price }}</td>
+        <td>{{ number_format($item->price) }}</td>
         <td>{{ $item->description }}</td>
         <td>
           <a href="{{ route('frontend.spend.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>

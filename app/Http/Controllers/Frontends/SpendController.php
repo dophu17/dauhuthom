@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Models\CategorySpend;
 use App\Http\Models\Spend;
+use Auth;
 
 class SpendController extends Controller
 {
@@ -17,12 +18,18 @@ class SpendController extends Controller
     	}
     	$data['prevDate'] = date('Y-m-d', strtotime('-1 day', strtotime($data['date'])));
     	$data['nextDate'] = date('Y-m-d', strtotime('+1 day', strtotime($data['date'])));
-    	$data['list'] = Spend::with(['category'])->whereDate('created_at', $data['date'])->get();
+    	$data['list'] = Spend::with(['category'])
+                            ->where('user_id', Auth::user()->id)
+                            ->whereDate('date', $data['date'])
+                            ->get();
     	return view('frontends.spends.index', $data);
     }
 
     public function getAdd() {
-    	$data['categories'] = CategorySpend::all();
+    	$data['categories'] = CategorySpend::where(function($query) {
+                                    $query->where('user_id', Auth::user()->id);
+                                    $query->orWhereNull('user_id');
+                                })->get();
     	$data['date'] = date('Y-m-d');
     	if (request()->date && !empty(request()->date)) {
     		$data['date'] = request()->date;
@@ -35,14 +42,18 @@ class SpendController extends Controller
     	$item->category_id = request()->category_id;
     	$item->price = request()->price;
     	$item->description = request()->description;
-    	$item->created_at = request()->created_at;
+    	$item->date = request()->date;
+        $item->user_id = Auth::user()->id;
     	$item->save();
     	return redirect()->route('frontend.spend.index');
     }
 
     public function getEdit($id) {
     	$data['item'] = Spend::find($id);
-    	$data['categories'] = CategorySpend::all();
+    	$data['categories'] = CategorySpend::where(function($query) {
+                                    $query->where('user_id', Auth::user()->id);
+                                    $query->orWhereNull('user_id');
+                                })->get();
     	return view('frontends.spends.edit', $data);
     }
 

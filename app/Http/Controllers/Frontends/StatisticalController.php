@@ -7,32 +7,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Models\CategorySpend;
 use App\Http\Models\Spend;
+use Auth;
 
 class StatisticalController extends Controller
 {
     public function index() {
-    	$data = [
-    		'today' => [
-	    		'totalPriceByCats' => [],
-	    		'categories' => []
-    		],
-    		'thismonth' => [
-    			'totalPriceByCats' => [],
-	    		'categories' => []
-    		]
-    	];
-    	$totalPriceByCats = Spend::select(DB::raw('SUM(price) as sum_price'), 'title')
+    	$data['statisticalToday'] = Spend::select(DB::raw('SUM(price) as sum_price'), DB::raw('COUNT(*) as count'), 'title')
     						->join('category_spends', 'spends.category_id', '=', 'category_spends.id')
-    						->whereDate('spends.created_at', date('Y-m-d'))
+                            ->where('spends.user_id', Auth::user()->id)
+    						->whereDate('spends.date', date('Y-m-d'))
     						->groupBy('category_id')
     						->orderBy('category_id', 'ASC')
     						->get();
-		if (!empty($totalPriceByCats)) {
-			foreach ($totalPriceByCats as $k => $v) {
-				$data['today']['totalPriceByCats'][] = $v->sum_price;
-				$data['today']['categories'][] = $v->title;
-			}
-		}
+    	$data['statisticalThisMonth'] = Spend::select(DB::raw('SUM(price) as sum_price'), DB::raw('COUNT(*) as count'), 'title')
+    						->join('category_spends', 'spends.category_id', '=', 'category_spends.id')
+                            ->where('spends.user_id', Auth::user()->id)
+    						->whereMonth('spends.date', date('m'))
+    						->whereYear('spends.date', date('Y'))
+    						->groupBy('category_id')
+    						->orderBy('category_id', 'ASC')
+    						->get();
     	return view('frontends.statistical.index', $data);
     }
 }

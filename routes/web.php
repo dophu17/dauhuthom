@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// -----------------backend-----------------
 Route::get('/admin/login', 'Backends\AuthController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'Backends\AuthController@postLogin')->name('admin.login');
 Route::get('/admin/logout', 'Backends\AuthController@getLogout')->name('admin.logout');
@@ -31,6 +32,10 @@ Route::namespace('Backends')->middleware(CheckAdminAuth::class)->prefix('admin')
     Route::get('/product/update-basic/{id}', 'ProductController@getUpdateBasic')->name('admin.product.updateBasic');
     Route::post('/product/update-basic/{id}', 'ProductController@postUpdateBasic')->name('admin.product.updateBasic');
 });
+
+// -----------------frontend-----------------
+Route::post('/login', 'Frontends\AuthController@postLogin')->name('frontend.login');
+Route::get('/logout', 'Frontends\AuthController@getLogout')->name('frontend.logout');
 
 Route::namespace('Frontends')->group(function () {
     Route::get('/', 'HomeController@home')->name('frontend.home');
@@ -50,6 +55,7 @@ Route::namespace('Frontends')->group(function () {
     Route::get('/category-spend/edit/{id}', 'CategorySpendController@getEdit')->name('frontend.category.spend.edit');
     Route::post('/category-spend/edit/{id}', 'CategorySpendController@postEdit')->name('frontend.category.spend.edit');
     Route::get('/category-spend/delete/{id}', 'CategorySpendController@getDelete')->name('frontend.category.spend.delete');
+    Route::get('/ajax/category-spend', 'CategorySpendController@getByIdAjax')->name('frontend.ajax.category.spend.getById');
 
    	// statistical
     Route::get('/statistical', 'StatisticalController@index')->name('frontend.statistical.index');

@@ -5,7 +5,7 @@
 
 <form action="{{ route('frontend.spend.add') }}" method="POST">
   @csrf
-  <input type="hidden" name="created_at" value="{{ $date }}">
+  <input type="hidden" name="date" value="{{ $date }}">
   <div class="form-group">
     <label for="category_id">Danh mục:</label>
     <select class="form-control" id="category_id" name="category_id">
@@ -24,5 +24,32 @@
   </div>
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
+
+@section('scripts')
+<script>
+  $(document).ready(function(){
+    var selectedCat = $( "#category_id option:selected" ).val();
+    getCat(selectedCat)
+    
+    $( "#category_id" ).change(function() {
+      selectedCat = $(this).val()
+      getCat(selectedCat)
+    });
+
+    function getCat(selectedCat) {
+      $.ajax({
+        url: "{{ route('frontend.ajax.category.spend.getById') }}",
+        data: {
+          id: selectedCat
+        }
+      }).done(function(res) {
+        if (res.status == 1) {
+          $('#price').val(res.data.price_default)
+        }
+      });
+    }
+  });
+</script>
+@stop
     
 @endsection

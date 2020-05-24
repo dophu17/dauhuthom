@@ -15,6 +15,7 @@ class CreateCategorySpendsTable extends Migration
     {
         Schema::create('category_spends', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned()->nullable(true);
             $table->string('title');
             $table->double('price_default')->default(0)->nullable(true);
             $table->string('avatar')->nullable(true);

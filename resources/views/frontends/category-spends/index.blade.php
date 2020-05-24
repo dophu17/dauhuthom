@@ -14,7 +14,6 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Hình đại diện</th>
       <th>Tên danh mục</th>
       <th>Giá mặc định</th>
       <th>Thao tác</th>
@@ -25,9 +24,8 @@
     @if($list && count($list) > 0)
       @foreach($list as $item)
       <tr>
-        <td>{{ $item->avatar }}</td>
         <td>{{ $item->title }}</td>
-        <td>{{ $item->price_default }}</td>
+        <td>{{ number_format($item->price_default) }}</td>
         <td>
           <a href="{{ route('frontend.category.spend.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
           <a href="{{ route('frontend.category.spend.delete', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-trash"></i></a>

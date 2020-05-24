@@ -16,8 +16,10 @@ class CreateSpendsTable extends Migration
         Schema::create('spends', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id')->unsigned()->nullable(true);
+            $table->integer('user_id')->unsigned()->nullable(true);
             $table->double('price')->default(0)->nullable(true);
             $table->string('description')->nullable(true);
+            $table->date('date')->nullable(true);
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
           <div class="top_bar_content ml-auto">
             <div class="top_bar_menu">
               <ul class="standard_dropdown top_bar_dropdown">
-                <li>
+                <li class="hassubs">
                   <a href="#">English<i class="fas fa-chevron-down"></i></a>
                   <ul>
                     <li><a href="#">Italian</a></li>
@@ -19,7 +19,7 @@
                     <li><a href="#">Japanese</a></li>
                   </ul>
                 </li>
-                <li>
+                <li class="hassubs">
                   <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
                   <ul>
                     <li><a href="#">EUR Euro</a></li>
@@ -27,12 +27,28 @@
                     <li><a href="#">JPY Japanese Yen</a></li>
                   </ul>
                 </li>
+                @if(Auth::check())
+                <li class="hassubs">
+                  <a href="#">
+                    <i class="fa fa-user"></i>
+                    {{ Auth::user() ? @Auth::user()->name : '' }}
+                    <i class="fas fa-chevron-down"></i>
+                  </a>
+                  <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="{{ route('frontend.spend.index') }}">Spend</a></li>
+                    <li><a href="{{ route('frontend.logout') }}">Logout</a></li>
+                  </ul>
+                </li>
+                @else
+                <li>
+                  <a href="#">Register</a>
+                </li>
+                <li>
+                  <a href="" data-toggle="modal" data-target="#loginModal">Sign in</a>
+                </li>
+                @endif
               </ul>
-            </div>
-            <div class="top_bar_user">
-              <div class="user_icon"><img src="{{ asset('OneTech') }}/images/user.svg" alt=""></div>
-              <div><a href="#">Register</a></div>
-              <div><a href="#">Sign in</a></div>
             </div>
           </div>
         </div>
