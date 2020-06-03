@@ -59,4 +59,21 @@ Route::namespace('Frontends')->group(function () {
 
    	// statistical
     Route::get('/statistical', 'StatisticalController@index')->name('frontend.statistical.index');
+
+   	// book
+    Route::get('/books', 'BookController@index')->name('frontend.book.index');
+    Route::get('/book/add', 'BookController@getAdd')->name('frontend.book.add');
+    Route::post('/book/add', 'BookController@postAdd')->name('frontend.book.add');
+    Route::get('/book/edit/{id}', 'BookController@getEdit')->name('frontend.book.edit');
+    Route::post('/book/edit/{id}', 'BookController@postEdit')->name('frontend.book.edit');
+    Route::get('/book/delete/{id}', 'BookController@getDelete')->name('frontend.book.delete');
+
+   	// author
+    Route::get('/authors', 'AuthorController@index')->name('frontend.author.index');
+    Route::get('/author/add', 'AuthorController@getAdd')->name('frontend.author.add');
+    Route::post('/author/add', 'AuthorController@postAdd')->name('frontend.author.add');
+    Route::get('/author/edit/{id}', 'AuthorController@getEdit')->name('frontend.author.edit');
+    Route::post('/author/edit/{id}', 'AuthorController@postEdit')->name('frontend.author.edit');
+    Route::get('/author/delete/{id}', 'AuthorController@getDelete')->name('frontend.author.delete');
+    Route::get('/ajax/author', 'AuthorController@searchByKeyAjax')->name('frontend.ajax.author.searchByKeyAjax');
 });

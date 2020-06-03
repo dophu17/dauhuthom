@@ -20,10 +20,16 @@
 	      <a id="nav-spend" class="nav-link active" href="{{ route('frontend.spend.index') }}">Chi tiêu</a>
 	    </li>
 	    <li class="nav-item">
-	      <a id="nav-category-spend" class="nav-link" href="{{ route('frontend.category.spend.index') }}">Danh mục chi tiêu</a>
+	      <a id="nav-category-spend" class="nav-link" href="{{ route('frontend.category.spend.index') }}">DM chi tiêu</a>
 	    </li>
 	    <li class="nav-item">
 	      <a id="nav-statistical" class="nav-link" href="{{ route('frontend.statistical.index') }}">Thống kê</a>
+	    </li>
+	    <li class="nav-item">
+	      <a id="nav-book" class="nav-link" href="{{ route('frontend.book.index') }}">Sách</a>
+	    </li>
+	    <li class="nav-item">
+	      <a id="nav-author" class="nav-link" href="{{ route('frontend.author.index') }}">Tác giả</a>
 	    </li>
 		</ul>
 		
@@ -53,6 +59,16 @@
 		  	$('#nav-statistical').addClass('active')
 		  } else {
 		  	$('#nav-statistical').removeClass('active')
+		  }
+		  if (split.indexOf('books') > -1) {
+		  	$('#nav-book').addClass('active')
+		  } else {
+		  	$('#nav-book').removeClass('active')
+		  }
+		  if (split.indexOf('authors') > -1) {
+		  	$('#nav-author').addClass('active')
+		  } else {
+		  	$('#nav-author').removeClass('active')
 		  }
 		});
 	</script>
