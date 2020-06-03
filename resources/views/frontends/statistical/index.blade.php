@@ -22,7 +22,7 @@
 		      <tr>
 		        <td>{{ $item->title }}</td>
 		        <td>{{ $item->count }}</td>
-		        <td>{{ number_format($item->sum_price) }}</td>
+		        <td><b>{{ number_format($item->sum_price) }}</b></td>
 		      </tr>
 		    	<?php $totalToday += $item->sum_price ?>
 		      @endforeach
@@ -54,7 +54,7 @@
 		      <tr>
 		        <td>{{ $item->title }}</td>
 		        <td>{{ $item->count }}</td>
-		        <td>{{ number_format($item->sum_price) }}</td>
+		        <td><b>{{ number_format($item->sum_price) }}</b></td>
 		      </tr>
 		    	<?php $totalThisMonth += $item->sum_price ?>
 		      @endforeach

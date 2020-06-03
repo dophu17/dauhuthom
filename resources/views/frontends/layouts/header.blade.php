@@ -11,22 +11,6 @@
           <div class="top_bar_content ml-auto">
             <div class="top_bar_menu">
               <ul class="standard_dropdown top_bar_dropdown">
-                <li class="hassubs">
-                  <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                  <ul>
-                    <li><a href="#">Italian</a></li>
-                    <li><a href="#">Spanish</a></li>
-                    <li><a href="#">Japanese</a></li>
-                  </ul>
-                </li>
-                <li class="hassubs">
-                  <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                  <ul>
-                    <li><a href="#">EUR Euro</a></li>
-                    <li><a href="#">GBP British Pound</a></li>
-                    <li><a href="#">JPY Japanese Yen</a></li>
-                  </ul>
-                </li>
                 @if(Auth::check())
                 <li class="hassubs">
                   <a href="#">
@@ -65,7 +49,7 @@
         <!-- Logo -->
         <div class="col-lg-2 col-sm-3 col-3 order-1">
           <div class="logo_container">
-            <div class="logo"><a href="#">OneTech</a></div>
+            <div class="logo"><a href="#">Đậu Hũ Thơm</a></div>
           </div>
         </div>
 

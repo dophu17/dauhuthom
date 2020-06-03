@@ -10,7 +10,7 @@
     <label for="category_id">Danh mục:</label>
     <select class="form-control" id="category_id" name="category_id">
       @foreach($categories as $cat)
-      <option value="{{ $cat->id }}">{{ $cat->title }}</option>
+      <option value="{{ $cat->id }}">{{ $cat->title . ' ' . ($cat->price_default / 1000) . 'K' }}</option>
       @endforeach
     </select>
   </div>
