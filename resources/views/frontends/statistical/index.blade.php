@@ -5,7 +5,16 @@
 
 <div class="row">
   <div class="col-md-6">
-    <h4>Hôm nay:</h4>
+  	<div class="row mb-3">
+  		<div class="col-md-3">
+	    	<h5>Hôm nay:</h5>
+	  	</div>
+	  	<div class="col-md-9">
+	  		<a href="?date={{ $prevDate }}&dateMonth={{ $dateMonth }}" class="btn btn-info"><</a>
+		    <a href="?date={{ $currentDate }}&dateMonth={{ $dateMonth }}" class="btn btn-info">{{ $date }}</a>
+		    <a href="?date={{ $nextDate }}&dateMonth={{ $dateMonth }}" class="btn btn-info">></a>
+	  	</div>
+  	</div>
     <table class="table table-hover">
 		  <thead>
 		    <tr>
@@ -27,7 +36,7 @@
 		    	<?php $totalToday += $item->sum_price ?>
 		      @endforeach
 		      <tr>
-		        <td></td>
+		        <td><b>Tổng:</b></td>
 		        <td></td>
 		        <td class="font-weight-bold text-danger">{{ number_format($totalToday) }}</td>
 		      </tr>
@@ -37,7 +46,16 @@
 		</table>
   </div>
   <div class="col-md-6">
-    <h4>Tháng này:</h4>
+    <div class="row mb-3">
+  		<div class="col-md-3">
+	    	<h5>Tháng này:</h5>
+	  	</div>
+	  	<div class="col-md-9">
+	  		<a href="?date={{ $date }}&dateMonth={{ $prevDateMonth }}" class="btn btn-info"><</a>
+		    <a href="?date={{ $date }}&dateMonth={{ $currentDateMonth }}" class="btn btn-info">{{ $dateMonth }}</a>
+		    <a href="?date={{ $date }}&dateMonth={{ $nextDateMonth }}" class="btn btn-info">></a>
+	  	</div>
+  	</div>
     <table class="table table-hover">
 		  <thead>
 		    <tr>
@@ -59,7 +77,7 @@
 		    	<?php $totalThisMonth += $item->sum_price ?>
 		      @endforeach
 		      <tr>
-		        <td></td>
+		        <td><b>Tổng:</b></td>
 		        <td></td>
 		        <td class="font-weight-bold text-danger">{{ number_format($totalThisMonth) }}</td>
 		      </tr>
