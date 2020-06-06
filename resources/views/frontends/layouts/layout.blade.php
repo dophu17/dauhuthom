@@ -15,6 +15,17 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('OneTech') }}/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('OneTech') }}/styles/responsive.css">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168676779-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168676779-1');
+</script>
+
+
 </head>
 
 <body>
