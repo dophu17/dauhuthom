@@ -37,24 +37,24 @@
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
 		      </div>
 		      <div class="modal-body">
 					  <div class="form-group">
-					    <label for="email">Email address:</label>
+					    <label for="email">Email:</label>
 					    <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
 					  </div>
 					  <div class="form-group">
-					    <label for="pwd">Password:</label>
+					    <label for="pwd">Mật khẩu:</label>
 					    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
 					  </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <button type="submit" class="btn btn-primary">Login</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+		        <button type="submit" class="btn btn-primary">Đăng nhập</button>
 		      </div>
 		    </div>
 		  </div>
