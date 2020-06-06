@@ -1,3 +1,6 @@
+@extends('backends.layouts.layout')
+@section('content')
+
 products list
 
 <br><a href="{{ route('admin.product.insertBasic') }}">Insert new</a>
@@ -20,3 +23,5 @@ products list
   @endforeach  
 
 <table>
+
+@endsection
