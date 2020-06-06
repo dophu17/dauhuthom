@@ -45,7 +45,7 @@ class SpendController extends Controller
     	$item->date = request()->date;
         $item->user_id = Auth::user()->id;
     	$item->save();
-    	return redirect()->route('frontend.spend.index');
+    	return redirect()->route('frontend.spend.index', ['date' => $item->date]);
     }
 
     public function getEdit($id) {
@@ -63,7 +63,7 @@ class SpendController extends Controller
     	$item->price = request()->price;
     	$item->description = request()->description;
     	$item->save();
-    	return redirect()->route('frontend.spend.index');
+    	return redirect()->route('frontend.spend.index', ['date' => $item->date]);
     }
 
     public function getDelete($id) {

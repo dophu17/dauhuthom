@@ -19,17 +19,17 @@
                     <i class="fas fa-chevron-down"></i>
                   </a>
                   <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="{{ route('frontend.spend.index') }}">Spend</a></li>
-                    <li><a href="{{ route('frontend.logout') }}">Logout</a></li>
+                    <li><a href="#">Trang cá nhân</a></li>
+                    <li><a href="{{ route('frontend.spend.index') }}">Chi tiêu</a></li>
+                    <li><a href="{{ route('frontend.logout') }}">Đăng xuất</a></li>
                   </ul>
                 </li>
                 @else
                 <li>
-                  <a href="#">Register</a>
+                  <a href="#">Đăng ký</a>
                 </li>
                 <li>
-                  <a href="" data-toggle="modal" data-target="#loginModal">Sign in</a>
+                  <a href="" data-toggle="modal" data-target="#loginModal">Đăng nhập</a>
                 </li>
                 @endif
               </ul>
