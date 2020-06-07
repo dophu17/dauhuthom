@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckAdminAuth
+class CheckFrontendAuth
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class CheckAdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check() || empty(Auth::user()) || Auth::user()->role != 1) {
+        if (!Auth::check() || empty(Auth::user())) {
             return redirect()->route('frontend.home');
         }
 

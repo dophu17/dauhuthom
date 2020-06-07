@@ -28,7 +28,6 @@ class SpendController extends Controller
     public function getAdd() {
     	$data['categories'] = CategorySpend::where(function($query) {
                                     $query->where('user_id', Auth::user()->id);
-                                    $query->orWhereNull('user_id');
                                 })->get();
     	$data['date'] = date('Y-m-d');
     	if (request()->date && !empty(request()->date)) {
@@ -52,7 +51,6 @@ class SpendController extends Controller
     	$data['item'] = Spend::find($id);
     	$data['categories'] = CategorySpend::where(function($query) {
                                     $query->where('user_id', Auth::user()->id);
-                                    $query->orWhereNull('user_id');
                                 })->get();
     	return view('frontends.spends.edit', $data);
     }

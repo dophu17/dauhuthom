@@ -50,14 +50,18 @@ class AuthorController extends Controller
 
     public function searchByKeyAjax() {
         $key = request()->key;
-        $item = Author::where(function($query) {
-                        $query->where('user_id', Auth::user()->id);
-                        $query->orWhereNull('user_id');
-                    })
-        			->where('name', 'LIKE', '%' . $key . '%')
-        			->get();
+        $item = [];
+        if (!empty($key)) {
+            $item = Author::where(function($query) {
+                            $query->where('user_id', Auth::user()->id);
+                            $query->orWhereNull('user_id');
+                        })
+                        ->where('name', 'LIKE', '%' . $key . '%')
+                        ->get()->toArray();
+        }
         return [
             'status' => 1,
+            'msg' => '',
             'data' => $item
         ];
     }

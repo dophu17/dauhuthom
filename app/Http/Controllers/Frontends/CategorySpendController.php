@@ -12,7 +12,6 @@ class CategorySpendController extends Controller
     public function index() {
     	$data['list'] = CategorySpend::where(function($query) {
                                 $query->where('user_id', Auth::user()->id);
-                                $query->orWhereNull('user_id');
                             })->get();
         
     	return view('frontends.category-spends.index', $data);

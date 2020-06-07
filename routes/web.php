@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdminAuth;
+use App\Http\Middleware\CheckFrontendAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,10 +37,9 @@ Route::namespace('Backends')->middleware(CheckAdminAuth::class)->prefix('admin')
 // -----------------frontend-----------------
 Route::post('/login', 'Frontends\AuthController@postLogin')->name('frontend.login');
 Route::get('/logout', 'Frontends\AuthController@getLogout')->name('frontend.logout');
+Route::get('/', 'Frontends\HomeController@home')->name('frontend.home');
 
-Route::namespace('Frontends')->group(function () {
-    Route::get('/', 'HomeController@home')->name('frontend.home');
-
+Route::namespace('Frontends')->middleware(CheckFrontendAuth::class)->group(function () {
    	// spend
     Route::get('/spends', 'SpendController@index')->name('frontend.spend.index');
     Route::get('/spend/add', 'SpendController@getAdd')->name('frontend.spend.add');
