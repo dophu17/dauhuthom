@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ asset('OneTech') }}/styles/bootstrap4/bootstrap.min.css">
 	<link href="{{ asset('OneTech') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-
+	@yield('css')
 </head>
 
 <body>

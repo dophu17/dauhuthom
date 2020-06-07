@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <label for="price">Giá:</label>
-    <input type="text" class="form-control" placeholder="VD: 20000" name="price" value="{{ $item->price }}" id="price">
+    <input type="number" class="form-control" placeholder="VD: 20000" name="price" value="{{ $item->price }}" id="price">
   </div>
   <div class="form-group">
     <label for="description">Ghi chú:</label>
