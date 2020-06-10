@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Models\CategorySpend;
 use App\Http\Models\Spend;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SpendController extends Controller
 {
@@ -37,6 +38,15 @@ class SpendController extends Controller
     }
 
     public function postAdd() {
+        $validator = Validator::make(request()->all(), [
+            'price' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.spend.add')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
     	$item = new Spend;
     	$item->category_id = request()->category_id;
     	$item->price = request()->price;
@@ -56,6 +66,15 @@ class SpendController extends Controller
     }
 
     public function postEdit($id) {
+        $validator = Validator::make(request()->all(), [
+            'price' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.spend.edit', ['id' => $id])
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
     	$item = Spend::find($id);
     	$item->category_id = request()->category_id;
     	$item->price = request()->price;

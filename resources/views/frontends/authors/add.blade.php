@@ -8,6 +8,9 @@
   <div class="form-group">
     <label for="name">Tên:</label>
     <input type="text" class="form-control" placeholder="VD: Tên tác giả" name="name" value="{{ old('name') }}" id="name">
+    @if($errors->first('name'))
+    <span class="text-danger">{{ $errors->first('name') }}</span>
+    @endif
   </div>
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>

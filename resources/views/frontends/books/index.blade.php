@@ -15,7 +15,6 @@
   <thead>
     <tr>
       <th>Tên</th>
-      <th>Giá</th>
       <th>Tác giả</th>
       <th>Trạng thái</th>
       <th>Thao tác</th>
@@ -27,7 +26,6 @@
       @foreach($list as $item)
       <tr>
         <td>{{ $item->name }}</td>
-        <td>{{ number_format($item->price) }}</td>
         <td>{{ @$item->author->name }}</td>
         <td>{{ $item->status == 1 ? 'Đã đọc' : 'Chưa đọc' }}</td>
         <td>
@@ -40,5 +38,11 @@
 
   </tbody>
 </table>
+
+<div class="row">
+  <div class="col-md-12">
+    {{ $list->appends([])->links() }}
+  </div>
+</div>
     
 @endsection
