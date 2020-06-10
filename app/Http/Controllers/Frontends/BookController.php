@@ -8,13 +8,14 @@ use Auth;
 use App\Http\Models\Author;
 use App\Http\Models\Book;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
     public function index() {
     	$data['list'] = Book::with(['author'])
                             ->where('user_id', Auth::user()->id)
-                            ->get();
+                            ->paginate(5);
     	return view('frontends.books.index', $data);
     }
 
@@ -23,6 +24,15 @@ class BookController extends Controller
     }
 
     public function postAdd() {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.book.add')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
     	$item = new Book;
     	$item->name = request()->name;
     	$item->price = request()->price;
@@ -51,10 +61,19 @@ class BookController extends Controller
 
     public function getEdit($id) {
     	$data['item'] = Book::find($id);
-    	return view('frontends.bookds.edit', $data);
+    	return view('frontends.books.edit', $data);
     }
 
     public function postEdit($id) {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.book.edit', ['id' => $id])
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
     	$item = Book::find($id);
     	$item->name = request()->name;
     	$item->price = request()->price;

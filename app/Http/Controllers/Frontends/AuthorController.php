@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Models\Author;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
 {
@@ -13,7 +14,7 @@ class AuthorController extends Controller
     	$data['list'] = Author::where(function($query) {
                                 $query->where('user_id', Auth::user()->id);
                                 $query->orWhereNull('user_id');
-                            })->get();
+                            })->paginate(5);
         
     	return view('frontends.authors.index', $data);
     }
@@ -23,6 +24,14 @@ class AuthorController extends Controller
     }
 
     public function postAdd() {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.author.add')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
     	$item = new Author;
     	$item->name = request()->name;
         $item->user_id = Auth::user()->id;
@@ -36,6 +45,14 @@ class AuthorController extends Controller
     }
 
     public function postEdit($id) {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('frontend.author.edit', ['id' => $id])
+                        ->withErrors($validator)
+                        ->withInput();
+        }
     	$item = Author::find($id);
     	$item->name = request()->name;
     	$item->save();

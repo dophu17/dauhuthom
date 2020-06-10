@@ -16,6 +16,9 @@
   <div class="form-group">
     <label for="price">Giá:</label>
     <input type="number" class="form-control" placeholder="VD: 20000" name="price" value="{{ $item->price }}" id="price">
+    @if($errors->first('price'))
+    <span class="text-danger">{{ $errors->first('price') }}</span>
+    @endif
   </div>
   <div class="form-group">
     <label for="description">Ghi chú:</label>
