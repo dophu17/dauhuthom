@@ -9,7 +9,6 @@ use Auth;
 class HomeController extends Controller
 {
     function home() {
-        // return view('frontends.homes.home');
         return view('frontends.homes.home');
     }
 }

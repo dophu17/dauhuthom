@@ -15,7 +15,7 @@ class AuthController extends Controller
 
     function postLogin() {
         $credentials = request()->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             return redirect()->route('frontend.home');
         }
         return [
