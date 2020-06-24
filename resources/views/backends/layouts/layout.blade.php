@@ -20,7 +20,7 @@
 		      <a class="nav-link" href="{{ route('admin.product.index') }}">Sản phẩm</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="#">Link 2</a>
+		      <a class="nav-link" href="{{ route('admin.campaign.index') }}">Chiến dịch</a>
 		    </li>
 
 		    <!-- Dropdown -->

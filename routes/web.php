@@ -32,6 +32,11 @@ Route::namespace('Backends')->middleware(CheckAdminAuth::class)->prefix('admin')
     Route::post('/product/insert-basic', 'ProductController@postInsertBasic')->name('admin.product.insertBasic');
     Route::get('/product/update-basic/{id}', 'ProductController@getUpdateBasic')->name('admin.product.updateBasic');
     Route::post('/product/update-basic/{id}', 'ProductController@postUpdateBasic')->name('admin.product.updateBasic');
+
+    // campaign
+    Route::get('/campaign', 'CampaignController@index')->name('admin.campaign.index');
+    Route::get('/campaign/add', 'CampaignController@getAdd')->name('admin.campaign.add');
+    Route::post('/campaign/add', 'CampaignController@postAdd')->name('admin.campaign.add');
 });
 
 // -----------------frontend-----------------
